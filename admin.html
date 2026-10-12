@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Studio & Episodes CMS | Care 2 Listen (Authorized Access)</title>
+  <meta name="description" content="Authorized Administrative Console for Care 2 Listen. Manage podcast episodes, custom fields, guest credentials, and disk-persisted broadcast archives." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="admin-portal-body">
+
+  <!-- SWISS BRUTALIST ADMIN HEADER -->
+  <header class="swiss-nav admin-nav" id="main-nav">
+    <div class="swiss-nav-cell brand-cell">
+      <a href="index.html" class="brand-anchor" title="Return to public site">
+        <span class="brand-title-bold">CARE/LISTEN</span>
+        <span class="brand-descriptor">ADMIN CONSOLE<br/>ARCHIVE MANAGEMENT</span>
+      </a>
+    </div>
+
+    <nav class="swiss-nav-links" aria-label="Admin Navigation">
+      <div class="swiss-nav-cell link-cell">
+        <span class="admin-security-badge">
+          <span class="rec-blink-dot" style="background:#e63946;"></span> RESTRICTED // ADMIN ONLY
+        </span>
+      </div>
+      <div class="swiss-nav-cell link-cell">
+        <a href="episodes.html" class="nav-link" target="_blank" title="Preview public episodes table in new tab">Public Archive ↗</a>
+      </div>
+    </nav>
+
+    <div class="swiss-nav-cell clock-cell">
+      <span class="clock-display">SECURITY / <span id="swiss-local-clock">16:15</span> LOCAL</span>
+    </div>
+
+    <div class="swiss-nav-cell cta-cell">
+      <a href="episodes.html" class="swiss-nav-cta">Exit to Public Site ↗</a>
+      <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Open Navigation Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <div class="drawer-panel">
+      <div>
+        <div class="drawer-header">
+          <div class="brand-wrap">
+            <span class="brand-title">CARE 2 LISTEN [ADMIN]</span>
+          </div>
+          <button class="modal-close-btn" id="drawer-close" aria-label="Close Menu">&times;</button>
+        </div>
+
+        <ul class="drawer-links">
+          <li><a href="admin.html" class="drawer-link active">Admin Console</a></li>
+          <li><a href="episodes.html" class="drawer-link">Public Episodes</a></li>
+          <li><a href="index.html" class="drawer-link">Home Page</a></li>
+        </ul>
+      </div>
+
+      <div class="drawer-footer">
+        <a href="episodes.html" class="btn btn-secondary" style="width: 100%;">Exit to Public Site ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN APP CONTENT (Hydrated via src/main.js -> renderDashboardView with Admin Authentication Guard) -->
+  <main id="app-content" class="main-wrapper admin-main-wrapper" role="main"></main>
+
+  <!-- PERSISTENT GLOBAL AUDIO PLAYER BAR -->
+  <!-- PERSISTENT GLOBAL AUDIO PLAYER BAR -->
+  <div id="global-player" class="global-player-bar hidden" role="region" aria-label="Podcast Audio Player">
+    <div class="player-inner-grid">
+      <div class="player-track-info">
+        <img id="player-cover" src="" alt="Episode artwork" class="player-thumb-img" />
+        <div class="player-title-col">
+          <div id="player-title" class="player-track-title">Episode Title</div>
+          <div id="player-guest" class="player-track-guest">Guest Name</div>
+        </div>
+      </div>
+      <div class="player-controls-col">
+        <div class="player-buttons-row">
+          <button id="player-skip-back" class="player-icon-btn" title="Rewind 15 seconds">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+          <button id="player-toggle" class="btn btn-round player-play-toggle" title="Play or Pause">
+            <span id="player-play-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </span>
+            <span id="player-pause-icon" class="hidden">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </span>
+          </button>
+          <button id="player-skip-fwd" class="player-icon-btn" title="Fast forward 30 seconds">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          </button>
+          <button id="player-speed-btn" class="speed-badge-btn" title="Playback speed">1.0x</button>
+        </div>
+        <div class="player-progress-row">
+          <span id="player-current-time" class="time-stamp">00:00</span>
+          <div id="player-progress" class="progress-bar-track">
+            <div id="player-progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="player-total-time" class="time-stamp">54:00</span>
+        </div>
+      </div>
+      <div class="player-extra-col">
+        <div class="equalizer-anim-wrap" title="Audio Dynamics">
+          <span class="player-vis-bar"></span>
+          <span class="player-vis-bar"></span>
+          <span class="player-vis-bar"></span>
+          <span class="player-vis-bar"></span>
+          <span class="player-vis-bar"></span>
+        </div>
+        <div class="volume-control-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <input type="range" id="player-volume" min="0" max="1" step="0.05" value="0.85" class="volume-slider" title="Volume Slider" />
+        </div>
+        <button id="player-view-notes" class="btn btn-ghost btn-sm" title="Show Notes & Interactive Transcript">Notes</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="main-audio-element" preload="none"></audio>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

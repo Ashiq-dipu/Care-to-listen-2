@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request & Pitch an Episode | Care 2 Listen Podcast</title>
+  <meta name="description" content="Propose a conversation, pitch clinical or lived experiences, and request an episode broadcast on Care 2 Listen." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/main-BfWw4jcT.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-f5vlo_e9.css">
+</head>
+<body>
+
+  <!-- SWISS BRUTALIST GRID HEADER -->
+  <header class="swiss-nav" id="main-nav">
+    <div class="swiss-nav-cell brand-cell">
+      <a href="index.html" class="brand-anchor">
+        <span class="brand-title-bold">CARE/LISTEN</span>
+        <span class="brand-descriptor">INDEPENDENT<br/>PODCAST PRACTICE</span>
+      </a>
+    </div>
+
+    <nav class="swiss-nav-links" aria-label="Main Navigation">
+      <div class="swiss-nav-cell link-cell"><a href="index.html" class="nav-link">Home</a></div>
+      
+      <!-- EPISODES DROPDOWN CELL -->
+      <div class="swiss-nav-cell link-cell nav-dropdown-cell">
+        <a href="episodes.html" class="nav-link nav-dropdown-trigger">
+          Episodes <span class="nav-arrow">▾</span>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="episodes.html" class="dropdown-item">All Episodes Archive</a>
+          <a href="admin.html" class="dropdown-item dropdown-item-accent">+ Add Episode (Admin) ↗</a>
+        </div>
+      </div>
+
+      <div class="swiss-nav-cell link-cell"><a href="hosts.html" class="nav-link">Hosts</a></div>
+      <div class="swiss-nav-cell link-cell"><a href="guests.html" class="nav-link">Guests</a></div>
+      <div class="swiss-nav-cell link-cell"><a href="videos.html" class="nav-link">Videos</a></div>
+
+      <!-- ABOUT DROPDOWN CELL (With Mission & Resources) -->
+      <div class="swiss-nav-cell link-cell nav-dropdown-cell">
+        <a href="about.html" class="nav-link nav-dropdown-trigger">
+          About <span class="nav-arrow">▾</span>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html" class="dropdown-item">Our Story & Ethos</a>
+          <a href="mission.html" class="dropdown-item">Mission & 4 Pillars</a>
+          <a href="resources.html" class="dropdown-item">Crisis Resources</a>
+        </div>
+      </div>
+
+      <div class="swiss-nav-cell link-cell"><a href="community.html" class="nav-link">Community</a></div>
+      <div class="swiss-nav-cell link-cell"><a href="contact.html" class="nav-link">Contact</a></div>
+    </nav>
+
+    <div class="swiss-nav-cell clock-cell">
+      <span class="clock-display">SEATTLE / <span id="swiss-local-clock">13:42</span> LOCAL</span>
+    </div>
+
+    <div class="swiss-nav-cell cta-cell">
+      <a href="become-a-guest.html" class="swiss-nav-cta">Apply to Be a Guest ↗</a>
+      <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Open Navigation Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <div class="drawer-panel">
+      <div>
+        <div class="drawer-header">
+          <div class="brand-wrap">
+            <span class="brand-title">CARE 2 LISTEN</span>
+          </div>
+          <button class="modal-close-btn" id="drawer-close" aria-label="Close Menu">&times;</button>
+        </div>
+
+        <ul class="drawer-links">
+          <li><a href="index.html" class="drawer-link">Home</a></li>
+          
+          <li class="drawer-sub-group">
+            <span class="drawer-sub-header">EPISODES</span>
+            <a href="episodes.html" class="drawer-link">All Episodes Archive</a>
+            <a href="admin.html" class="drawer-link" style="color: var(--color-vermilion); font-weight: 700;">+ Add Episode (Admin) ↗</a>
+          </li>
+
+          <li><a href="hosts.html" class="drawer-link">Hosts</a></li>
+          <li><a href="guests.html" class="drawer-link">Guests</a></li>
+          <li><a href="videos.html" class="drawer-link">Videos</a></li>
+
+          <li class="drawer-sub-group">
+            <span class="drawer-sub-header">ABOUT & PHILOSOPHY</span>
+            <a href="about.html" class="drawer-link">Our Story & Ethos</a>
+            <a href="mission.html" class="drawer-link">Mission & 4 Pillars</a>
+            <a href="resources.html" class="drawer-link">Crisis Resources</a>
+          </li>
+
+          <li><a href="community.html" class="drawer-link">Community & Reviews</a></li>
+          <li><a href="contact.html" class="drawer-link">Contact</a></li>
+          <li><a href="request-episode.html" class="drawer-link active">Request an Episode</a></li>
+        </ul>
+      </div>
+
+      <div class="drawer-footer">
+        <a href="request-episode.html" class="btn btn-primary" style="width: 100%;">+ Request an Episode</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN APP CONTENT (Hydrated via src/main.js -> renderRequestEpisodeView) -->
+  <main id="app-content" class="main-wrapper" role="main"></main>
+
+</body>
+</html>
